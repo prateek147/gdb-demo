@@ -10,6 +10,12 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
+
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+
+- (IBAction)loginButtonTapped:(id)sender;
+
 @end
 
 @implementation ViewController
@@ -26,4 +32,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)loginButtonTapped:(id)sender {
+  if([_usernameTextField.text isEqualToString:@"Admin"] && [_passwordTextField.text isEqualToString:@"HELLOIOSAPPLICATIONEXPERTS"]){
+    [self performSegueWithIdentifier:@"adminPage" sender:self];
+  }else{
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Incorrect Username or password" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+  }
+}
 @end
